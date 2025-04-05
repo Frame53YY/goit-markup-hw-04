@@ -98,7 +98,8 @@ img {
 
 /* --------------------HEADER-------------------- */
 .header {
-  border-bottom: 1px solid #e7e9fc;
+  box-shadow: 0 1px 6px 0 rgba(46, 47, 66, 0.08),
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 2px 1px 0 rgba(46, 47, 66, 0.08);
 }
 
 .header .container {
@@ -124,9 +125,33 @@ img {
 }
 
 .navigation-item-link {
+  display: block;
   font-weight: 500;
   color: #2e2f42;
   padding: 24px 0;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigation-item-link.current {
+  color: #404bbf;
+  position: relative;
+}
+
+.navigation-item-link.current::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: '';
+  width: 100%;
+  height: 4px;
+  background-color: #404bbf;
+  border-radius: 2px;
+  transform: scale(1, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigation-item-link:hover.current::after {
+  transform: scale(0.3, 0.5);
 }
 
 .contacts {
@@ -144,11 +169,13 @@ img {
 }
 
 .contacts-item-link {
+  display: block;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #434455;
   padding: 24px 0;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navigation-item-link:hover,
@@ -164,7 +191,7 @@ img {
 }
 
 .hero-section {
-  background: #2e2f42;
+  background-color: #2e2f42;
   padding: 188px 0;
   text-align: center;
   background-image: linear-gradient(
@@ -204,6 +231,7 @@ img {
   padding: 16px 32px;
   border: none;
   white-space: nowrap;
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-button:hover,
 .hero-button:focus {
@@ -290,6 +318,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link:hover,
@@ -313,6 +342,7 @@ img {
 }
 .portfolio-item {
   flex-basis: calc((100% - 48px) / 3);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-item:hover,
@@ -328,7 +358,26 @@ img {
   border-left: 1px solid #e7e9fc;
   border-right: 1px solid #e7e9fc;
 }
+.portfolio-image-wrap {
+  position: relative;
+  overflow: hidden;
+}
 .portfolio-image {
+}
+.portfolio-image-text {
+  background-color: #4d5ae5;
+  color: #f4f4fd;
+  padding: 40px 32px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.portfolio-item:hover .portfolio-image-text,
+.portfolio-item:focus .portfolio-image-text {
+  transform: translateY(0);
 }
 .portfolio-subtitle {
   margin-bottom: 8px;
