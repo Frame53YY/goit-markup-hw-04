@@ -1,4 +1,9 @@
 .prettierrc.json
+node_modules
+.vscode
+.stylelintrc.json
+package-lock.json
+package.json
 
 # Logs
 logs
